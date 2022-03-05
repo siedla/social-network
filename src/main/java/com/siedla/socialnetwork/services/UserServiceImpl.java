@@ -5,6 +5,8 @@ import com.siedla.socialnetwork.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -17,10 +19,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
 
-        Set<User> userSet = new HashSet<>();
-        userRepository.findAll().iterator().forEachRemaining(userSet::add);
-        return userSet;
+        List<User> userList = new LinkedList<>();
+        userRepository.findAll().iterator().forEachRemaining(userList::add);
+        return userList;
     }
 }

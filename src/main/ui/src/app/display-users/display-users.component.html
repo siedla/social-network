@@ -1,0 +1,23 @@
+
+<table>
+    <thead>
+    <tr>
+        <th style="width: 150px;">Id</th>
+        <th style="width: 150px;">First Name</th>
+        <th style="width: 150px;">Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <span *ngFor="let post of posts">{{post.description}}
+    <br>
+    </span>
+</div>

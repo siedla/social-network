@@ -4,11 +4,14 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
-public class User {
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +28,23 @@ public class User {
     @Column
     @NotNull(message="{NotNull.User.email}")
     private String email;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts = new LinkedList<>();
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public User addPost(Post post) {
+        post.setUser(this);
+        this.posts.add(post);
+        return this;
+    }
 
 }
