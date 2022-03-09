@@ -20,7 +20,12 @@ export class UserService {
     return this.http.get<User[]>(this.usersUrl);
   }
 
+  //dokonczyc
   public findPostsByUserId(): Observable<Post[]> {
     return this.http.get<Post[]>(this.usersUrl+"/1/posts");
+  }
+
+  public getUserByEmail(email: String): Observable<User> {
+    return this.http.get<User>(this.usersUrl+"/email/"+email);
   }
 }

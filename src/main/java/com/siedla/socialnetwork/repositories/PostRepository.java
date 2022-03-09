@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface PostRepository extends CrudRepository<Post, Long> {
 
     Optional<List<Post>> findByUserId(Long id);
+
+    List<Post> findAllByIdBetween(Long start, Long end);
 }

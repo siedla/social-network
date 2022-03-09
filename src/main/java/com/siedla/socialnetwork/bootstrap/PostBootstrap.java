@@ -30,7 +30,7 @@ public class PostBootstrap implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         postRepository.saveAll(getPosts());
-        userRepository.save(new User("Jan", "Kowal", "aasdas@email.com"));
+        userRepository.save(new User("Jan", "Nowak", "email@email.com"));
     }
 
     private List<Post> getPosts() {

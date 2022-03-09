@@ -14,13 +14,11 @@ export class DisplayUsersComponent implements OnInit  {
   constructor(private userService: UserService) { }
 
   users: User[] = [];
-  posts: Post[] = [];
   userCount = 0;
 
 
   ngOnInit() {
 	  this.getAllUsers();
-    this.getPostsByUserId();
     
   }
 
@@ -30,10 +28,4 @@ export class DisplayUsersComponent implements OnInit  {
     });
   }
 
-  getPostsByUserId() {
-    this.userService.findPostsByUserId().subscribe(data => {
-      this.posts = data;
-    });
-
-  }
 }

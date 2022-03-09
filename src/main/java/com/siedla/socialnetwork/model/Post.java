@@ -1,18 +1,14 @@
 package com.siedla.socialnetwork.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "posts")
-@Getter
-@Setter
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Post {
 
     @Id
@@ -26,8 +22,10 @@ public class Post {
     private Long likes;
 
     @ManyToOne
-    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("posts")
     private User user;
+
 
     public Post(String description, LocalDate postDate, LocalTime postTime, Long likes) {
         this.description = description;
@@ -44,8 +42,62 @@ public class Post {
         this.user = user;
     }
 
+    public Post(Long id, String description, User user) {
+        this.description = description;
+        this.user = user;
+        this.id = id;
+    }
+
     public Post() {
 
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(LocalDate postDate) {
+        this.postDate = postDate;
+    }
+
+    public LocalTime getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(LocalTime postTime) {
+        this.postTime = postTime;
+    }
+
+    public Long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Long likes) {
+        this.likes = likes;
+    }
+
+    //@JsonManagedReference
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

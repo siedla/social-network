@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+#router {
+    box-shadow: 1px 1px 5px black;
+}
+
+#router a {
+    font-size: 22px;
+    text-decoration: none;
+    color: black;
+}
+
+#router a:hover {
+    text-decoration: none;
+    color: red;
+}
+
+.container {
+    box-shadow: 1px 1px 5px black;
+    margin: 10px;
+    padding: 10px;
+}
+
+button {
+    box-shadow: 1px 1px 5px black;
+    margin: 2px;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+button:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.sectionName {
+    margin: 10px;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+}
+
+.BOelement {
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.container button {
+    margin: 10px;
+}

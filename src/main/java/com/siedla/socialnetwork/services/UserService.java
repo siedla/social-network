@@ -8,4 +8,5 @@ import java.util.Set;
 public interface UserService {
 
     List<User> getUsers();
+    User getUserByEmail(String email);
 }

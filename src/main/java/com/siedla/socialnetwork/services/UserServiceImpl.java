@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService{
         userRepository.findAll().iterator().forEachRemaining(userList::add);
         return userList;
     }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
 }
