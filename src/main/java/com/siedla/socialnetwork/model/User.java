@@ -38,6 +38,13 @@ public class User {
     @JsonIgnoreProperties("user")
     private List<Post> posts = new LinkedList<>();
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private User user;
+
+    @OneToMany(mappedBy = "user")
+    private List<User> friends = new LinkedList<>();
+
     public User() {
         this.photoUrl = "https://i.ibb.co/cL2QC11/Screenshot-1.png";
     }
@@ -101,5 +108,21 @@ public class User {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

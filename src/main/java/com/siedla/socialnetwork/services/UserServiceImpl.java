@@ -4,10 +4,7 @@ import com.siedla.socialnetwork.model.User;
 import com.siedla.socialnetwork.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -29,5 +26,19 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public User addFriend(User user, Long userId, Long friendId) {
+        user.setId(userId);
+        Optional<User> optionalUser = userRepository.findById(friendId);
+        User friend;
+        if(optionalUser.isPresent()){
+            friend = optionalUser.get();
+            user.getFriends().add(friend);
+            friend.getFriends().add(user);
+        }
+        userRepository.save(user);
+        return user;
     }
 }

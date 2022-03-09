@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     private final UserService userService;
@@ -27,5 +27,12 @@ public class UserController {
     @GetMapping(path = "/users/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
+    }
+
+    @PostMapping("/users/{userId}/{friendId}")
+    public User addFriend(@PathVariable Long userId, @PathVariable Long friendId, @RequestBody User user) {
+        User u = userService.addFriend(user, userId, friendId);
+        System.out.println(u.getFriends().get(0));
+        return u;
     }
 }

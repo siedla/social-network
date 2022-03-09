@@ -9,4 +9,5 @@ public interface UserService {
 
     List<User> getUsers();
     User getUserByEmail(String email);
+    User addFriend(User user, Long userId, Long friendId);
 }
