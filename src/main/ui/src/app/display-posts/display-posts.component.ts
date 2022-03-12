@@ -35,10 +35,6 @@ export class DisplayPostsComponent implements OnInit {
 
   }
 
-  show() {
-    //console.log(this.posts);
-    
-  }
 
   likeButtonClick(post: Post) {
     post.likes= post.likes + 1;

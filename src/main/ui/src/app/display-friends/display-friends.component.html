@@ -1,0 +1,9 @@
+
+<div class="BOelement">
+    <h3>Kontakty</h3>
+</div>
+
+<div id="post-container" *ngFor="let friend of user.friends">
+    <div id="author"><img [src]="friend.photoUrl">{{friend.firstName}} {{friend.lastName}}</div>
+</div>
+

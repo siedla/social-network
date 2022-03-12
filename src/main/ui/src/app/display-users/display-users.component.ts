@@ -25,6 +25,7 @@ export class DisplayUsersComponent implements OnInit  {
   getAllUsers() {
     this.userService.findAll().subscribe(data => {
       this.users = data;
+      console.log(data);
     });
   }
 

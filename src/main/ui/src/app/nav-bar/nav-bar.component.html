@@ -1,9 +1,9 @@
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand">SIEDLA SOCIAL NETWORK</a>
+<nav class="navbar navbar-light" style=" background-color:#242526">
+  <div class="container-fluid" >
+    <a (click)="logoClick()" class="navbar-brand" style="color: azure;">SIEDLA SOCIAL NETWORK</a>
     <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <input name="search" [(ngModel)]="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
     </form>
   </div>
 </nav>

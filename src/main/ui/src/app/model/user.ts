@@ -8,4 +8,5 @@ export interface User {
     password: string;
     photoUrl: string;
     posts: Post[];
+    friends: User[];
 }

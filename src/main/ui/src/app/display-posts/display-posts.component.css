@@ -1,24 +1,28 @@
 #post-container{
     flex-flow: wrap;
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
+    
     width: 80%;
     height: auto;
     padding: 10px;
-    margin-left: 50px;
+    margin-left: 10px;
     margin-right: 50px;
     border-radius: 10px;
-    
+    background-color: #3a3b3c;
+    margin-bottom: 20px;
+    background-color:#242526
 }
 .col {
     margin: 4px;
 }
 button{
     width:fit-content;
+    margin-right: 30px;
 }
 
 img {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    border-radius: 50%;
 }

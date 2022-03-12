@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private dataService: DataService, private router: Router) { }
+
+  name!: string;
 
   ngOnInit(): void {
   }
 
+
+  search() {
+    console.log(name);
+    var fullName = this.name.split(' ');
+    var firstName = fullName[0];
+    var lastName = fullName[fullName.length - 1];
+   
+    this.userService.findUserByName(firstName, lastName).subscribe(data => {
+      this.dataService.notifyAboutFoundUsers(data);
+    });
+    this.router.navigate(["foundUsers"]);
+  }
+
+  logoClick() {
+    this.router.navigate(['']);
+  }
 }

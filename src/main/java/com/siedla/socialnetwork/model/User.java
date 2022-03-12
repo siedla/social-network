@@ -43,12 +43,24 @@ public class User {
     @JsonIgnoreProperties("user")
     private List<Post> posts = new LinkedList<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    /*@ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     private User user;
 
     @OneToMany(mappedBy = "user")
+    private List<User> friends = new LinkedList<>();*/
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name="friends",
+            joinColumns=@JoinColumn(name="personId"),
+            inverseJoinColumns=@JoinColumn(name="friendId")
+    )
+    @JsonIgnoreProperties("friends")
     private List<User> friends = new LinkedList<>();
+
+    @ManyToMany(mappedBy = "friends")
+    @JsonIgnore
+    private List<User> friendOf = new LinkedList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "liked_posts", joinColumns = @JoinColumn(name = "user_id"),
@@ -130,12 +142,12 @@ public class User {
         this.friends = friends;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getFriendOf() {
+        return friendOf;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setFriendOf(List<User> friendOf) {
+        this.friendOf = friendOf;
     }
 
     public List<Post> getLikedPosts() {
