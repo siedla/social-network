@@ -2,6 +2,7 @@ package com.siedla.socialnetwork.services;
 
 import com.siedla.socialnetwork.model.User;
 import com.siedla.socialnetwork.repositories.UserRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -40,5 +41,23 @@ public class UserServiceImpl implements UserService{
         }
         userRepository.save(user);
         return user;
+    }
+    @Override
+    public List<User> findUserByFirstAndLastName(String firstName, String lastName){
+        return userRepository.findUsersByFirstNameAndLastName(firstName, lastName);
+    }
+
+    @Override
+    public User addNewUser(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public Boolean login(String email, String password) {
+        User user = userRepository.findUserByEmail(email);
+        if(user == null) {
+            return false;
+        }
+        return user.getPassword().equals(password);
     }
 }

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -26,6 +28,8 @@ public class Post {
     @JsonIgnoreProperties("posts")
     private User user;
 
+    @ManyToMany(mappedBy = "likedPosts")
+    private List<User> likedBy = new LinkedList<>();
 
     public Post(String description, LocalDate postDate, LocalTime postTime, Long likes) {
         this.description = description;
@@ -99,5 +103,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<User> getLikedBy() {
+        return likedBy;
+    }
+
+    public void setLikedBy(List<User> likedBy) {
+        this.likedBy = likedBy;
     }
 }
