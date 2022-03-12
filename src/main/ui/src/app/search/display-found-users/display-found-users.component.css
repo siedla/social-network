@@ -1,0 +1,15 @@
+img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+button{
+    margin-left: 15px;
+    width:fit-content;
+}
+#user-box {
+    margin-bottom: 10px;
+}
+#container {
+    margin-top: 15px;
+}

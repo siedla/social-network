@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="login()">  
+  
+    <div class="row">  
+      <div class=" col-md-offset-1 col-md-4">  
+          <label for="email"> Email </label>  
+          <input formControlName="email" class="form-control" type="text">   
+      </div>  
+    </div>  
+    
+    <div class="row">  
+      <div class=" col-md-offset-1 col-md-4">  
+          <label for="password"> Password </label>  
+          <input formControlName="password" class="form-control" type="password">   
+      </div>  
+    </div>  
+    
+    <div class="row" style="margin-top: 40px;">  
+      <div class="col-md-offset-1 col-md-4">  
+          <button class="btn btn-md btn-primary btn-style"  >Login</button>  
+      </div>  
+    </div>  
+    
+  </form>  

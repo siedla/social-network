@@ -1,0 +1,24 @@
+#post-container{
+    flex-flow: wrap;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+    
+}
+.col {
+    margin: 4px;
+}
+button{
+    width:fit-content;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}

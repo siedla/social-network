@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="BOelement">
+        <h3>Dodaj nowy post</h3>
+    </div>
+    <div class="BOelement">
+        <label>Opis: <br>
+                <textarea id="description-input" [(ngModel)]="newPost.description"></textarea>
+            </label>
+    </div>
+    <div id="button">
+        <button (click)="onSubmit()" id="add" type="submit">Dodaj</button>
+    </div>
+</div>

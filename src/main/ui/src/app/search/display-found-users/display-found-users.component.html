@@ -1,0 +1,7 @@
+
+<div id="container">
+    <div id="user-box" *ngFor="let user of foundUsers">
+        <img [src]="user.photoUrl">{{user.firstName}} {{user.lastName}}
+        <button type="button" class="btn btn-success" >Dodaj Znajomego</button>
+    </div>
+</div>
