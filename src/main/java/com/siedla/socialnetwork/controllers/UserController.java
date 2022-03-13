@@ -34,9 +34,7 @@ public class UserController {
 
     @PostMapping("/users/{userId}/{friendId}")
     public User addFriend(@PathVariable Long userId, @PathVariable Long friendId, @RequestBody User user) {
-        User u = userService.addFriend(user, userId, friendId);
-        System.out.println(u.getFriends().get(0));
-        return u;
+        return userService.addFriend(user, userId, friendId);
     }
 
     @GetMapping("/users/{firstName}/{lastName}")
@@ -51,6 +49,5 @@ public class UserController {
 
         return userService.addNewUser(newUser);
     }
-
 
 }

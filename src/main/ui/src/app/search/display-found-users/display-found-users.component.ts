@@ -25,5 +25,8 @@ export class DisplayFoundUsersComponent implements OnInit {
 
   }
 
-
+  addFriendClick(user: User) {
+    this.userService.getCurrentUser().subscribe(currnetUser => this.userService.addFriend(currnetUser, user.id).subscribe(data => console.log(data)));
+    //this.userService.addFriend(this.userService.getCurrentUser(), user.id).subscribe(data => console.log(data));
+  }
 }

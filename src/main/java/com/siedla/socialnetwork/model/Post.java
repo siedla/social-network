@@ -3,6 +3,7 @@ package com.siedla.socialnetwork.model;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "posts")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
-public class Post {
+public class Post implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +22,11 @@ public class Post {
     private String description;
     private LocalDate postDate;
     private LocalTime postTime;
-    private Long likes;
+    private Long likes=0L;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties("posts")
+    @JsonIgnoreProperties({"friends", "posts", "likedPosts"})
     private User user;
 
     @ManyToMany(mappedBy = "likedPosts")

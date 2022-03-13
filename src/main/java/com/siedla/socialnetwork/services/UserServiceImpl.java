@@ -31,15 +31,17 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User addFriend(User user, Long userId, Long friendId) {
-        user.setId(userId);
-        Optional<User> optionalUser = userRepository.findById(friendId);
+        Optional<User> optionalFriendUser = userRepository.findById(friendId);
+        Optional<User> optionalUser = userRepository.findById(userId);
         User friend;
-        if(optionalUser.isPresent()){
-            friend = optionalUser.get();
+        if(optionalFriendUser.isPresent() && optionalUser.isPresent() &&
+                !optionalUser.get().getFriends().contains(optionalFriendUser.get())){
+            friend = optionalFriendUser.get();
+            user = optionalUser.get();
             user.getFriends().add(friend);
             friend.getFriends().add(user);
+            userRepository.save(user);
         }
-        userRepository.save(user);
         return user;
     }
     @Override

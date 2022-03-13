@@ -3,6 +3,7 @@ package com.siedla.socialnetwork.model;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Set;
         property = "id",
         resolver = EntityIdResolver.class,
         scope=User.class)*/
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +56,7 @@ public class User {
             joinColumns=@JoinColumn(name="personId"),
             inverseJoinColumns=@JoinColumn(name="friendId")
     )
-    @JsonIgnoreProperties("friends")
+    @JsonIgnoreProperties({"friends","likedPosts"})
     private List<User> friends = new LinkedList<>();
 
     @ManyToMany(mappedBy = "friends")

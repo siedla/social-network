@@ -23,12 +23,14 @@ export class PostAddingFormComponent implements OnInit {
 
   onSubmit()  {
   
-    this.user = this.userService.getCurrentUser();
-    this.newPost.user = this.user;
-    this.postService.addPost(this.newPost, this.user.id).subscribe(res => this.dataService.notifyAboutChange());
-    
-    this.newPost.description="";
+    this.userService.getCurrentUser().subscribe(data=> {
+      this.user = data;
+      this.newPost.user = this.user;
+      this.postService.addPost(this.newPost, this.user.id).subscribe(res => this.dataService.notifyAboutChange());
       
+      this.newPost.description="";});
+    
+    
   }
 
 
