@@ -10,6 +10,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.LinkedList;
@@ -48,8 +49,7 @@ public class PostBootstrap implements ApplicationListener<ContextRefreshedEvent>
         userRepository.save(user1);
         Post user1Post = new Post();
         user1Post.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-        user1Post.setPostDate(LocalDate.of(2022, Month.FEBRUARY, 28));
-        user1Post.setPostTime(LocalTime.of(10,43,12));
+        user1Post.setPostDate(LocalDateTime.of(2022, Month.FEBRUARY, 28, 11, 23, 44));
         user1Post.setLikes(11L);
         user1.addPost(user1Post);
 
@@ -57,8 +57,7 @@ public class PostBootstrap implements ApplicationListener<ContextRefreshedEvent>
 
         Post user2Post = new Post();
         user2Post.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-        user2Post.setPostDate(LocalDate.of(2022, Month.MARCH, 2));
-        user2Post.setPostTime(LocalTime.of(21,43,13));
+        user2Post.setPostDate(LocalDateTime.of(2022, Month.MARCH, 2, 20, 20, 1));
         user2Post.setLikes(18L);
         user2.addPost(user2Post);
 

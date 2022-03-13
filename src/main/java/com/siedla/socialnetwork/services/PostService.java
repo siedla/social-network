@@ -7,6 +7,7 @@ import com.siedla.socialnetwork.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -49,8 +50,7 @@ public class PostService {
 
         post.getUser().setId(userId);
         post.setLikes(0L);
-        post.setPostDate(LocalDate.now());
-        post.setPostTime(LocalTime.now());
+        post.setPostDate(LocalDateTime.now());
         Optional<User> user = userRepository.findById(post.getUser().getId());
         user.ifPresent(value -> value.addPost(post));
         return postRepository.save(post);

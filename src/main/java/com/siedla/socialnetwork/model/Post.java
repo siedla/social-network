@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,8 +21,7 @@ public class Post implements Serializable {
 
     @Lob
     private String description;
-    private LocalDate postDate;
-    private LocalTime postTime;
+    private LocalDateTime postDate;
     private Long likes=0L;
 
     @ManyToOne
@@ -32,17 +32,15 @@ public class Post implements Serializable {
     @ManyToMany(mappedBy = "likedPosts")
     private List<User> likedBy = new LinkedList<>();
 
-    public Post(String description, LocalDate postDate, LocalTime postTime, Long likes) {
+    public Post(String description, LocalDateTime postDate, Long likes) {
         this.description = description;
         this.postDate = postDate;
-        this.postTime = postTime;
         this.likes = likes;
     }
 
-    public Post(String description, LocalDate postDate, LocalTime postTime, Long likes, User user) {
+    public Post(String description, LocalDateTime postDate, Long likes, User user) {
         this.description = description;
         this.postDate = postDate;
-        this.postTime = postTime;
         this.likes = likes;
         this.user = user;
     }
@@ -73,20 +71,12 @@ public class Post implements Serializable {
         this.description = description;
     }
 
-    public LocalDate getPostDate() {
+    public LocalDateTime getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDate postDate) {
+    public void setPostDate(LocalDateTime postDate) {
         this.postDate = postDate;
-    }
-
-    public LocalTime getPostTime() {
-        return postTime;
-    }
-
-    public void setPostTime(LocalTime postTime) {
-        this.postTime = postTime;
     }
 
     public Long getLikes() {

@@ -1,6 +1,20 @@
 
 <div id="post-container" *ngFor="let post of posts">
-    <div id="author"><img [src]="post.user.photoUrl">{{post.user.firstName}} {{post.user.lastName}}</div>
+    <div id="author">
+        <span>
+            <img [src]="post.user.photoUrl">
+        </span>
+       <span id="details">
+            <span>
+                {{post.user.firstName}} {{post.user.lastName}}
+            </span>
+            
+            <span id="date">
+                {{post.postDate | date}} {{post.postDate | date:'shortTime'}}
+            </span>
+       </span>
+       
+    </div>
     <div id="description">{{post.description}}</div>
     <div class="row">
         <p class="col">Likes: {{post.likes}}</p>
