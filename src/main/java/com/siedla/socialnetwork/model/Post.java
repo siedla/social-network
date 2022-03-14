@@ -4,15 +4,12 @@ import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @Table(name = "posts")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Post implements Serializable {
 
     @Id
@@ -102,4 +99,5 @@ public class Post implements Serializable {
     public void setLikedBy(List<User> likedBy) {
         this.likedBy = likedBy;
     }
+
 }

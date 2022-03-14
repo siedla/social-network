@@ -3,7 +3,6 @@ import { Post } from '../model/post';
 import { User } from '../model/user';
 import { PostsService } from '../services/posts.service';
 import { UserService } from '../services/user.service';
-import { FormsModule } from '@angular/forms';
 import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-post-adding-form',
@@ -15,6 +14,10 @@ export class PostAddingFormComponent implements OnInit {
   newPost: Post={} as Post;
   email: string = "";
   user: User = {} as User;
+
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  file!: File;
 
   constructor(private postService: PostsService, private userService: UserService, private dataService: DataService) { }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../model/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private route: Router) { }
+
+  user!: User;
 
   ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe(data => this.user=data);
   }
 
+  logOutClick() {
+    this.userService.logOut();
+    this.route.navigate(['login']);
+  }
 }

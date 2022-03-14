@@ -3,6 +3,7 @@
     width: 100%;
     background-color: #18191a;
     color:azure
+    
 }
 #right-side{
     margin-left: 30px;
@@ -11,7 +12,7 @@
 }
 #main-content{
     width: 50%;
-    
+    margin-top: 50px;
 }
 #left-side{
     width:30%;

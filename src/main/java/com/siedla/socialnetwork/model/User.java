@@ -4,18 +4,12 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "users")
-/*@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id",
-        resolver = EntityIdResolver.class,
-        scope=User.class)*/
 public class User implements Serializable {
 
     @Id

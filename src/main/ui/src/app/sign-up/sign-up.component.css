@@ -1,0 +1,17 @@
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    
+    padding-top: min(100px);
+    
+    height: 100%;
+  }
+  
+  #box div {
+    min-width: 300px;
+
+  }
+  button{
+      width: 100%;
+  }

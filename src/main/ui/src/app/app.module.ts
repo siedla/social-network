@@ -19,6 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DisplayFriendsComponent } from './display-friends/display-friends.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true }],
   bootstrap: [AppComponent]

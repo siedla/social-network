@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private userService: UserService, private dataService: DataService, private router: Router) { }
+  constructor(public userService: UserService, private dataService: DataService, private router: Router) { }
 
   name!: string;
 

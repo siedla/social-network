@@ -15,6 +15,9 @@
        </span>
        
     </div>
+    <div>
+        <img [src]="post.photoUrl" *ngIf="post.photoUrl">
+    </div>
     <div id="description">{{post.description}}</div>
     <div class="row">
         <p class="col">Likes: {{post.likes}}</p>

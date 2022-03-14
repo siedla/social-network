@@ -1,23 +1,33 @@
-<form [formGroup]="form" (ngSubmit)="login()">  
+<div class="box">
+ 
   
+  <form [formGroup]="form" (ngSubmit)="login()">  
+    <div class="row">
+      <h2 style="color: azure;">Logowanie</h2>
+    </div>
     <div class="row">  
       <div class=" col-md-offset-1 col-md-4">  
-          <label for="email"> Email </label>  
-          <input formControlName="email" class="form-control" type="text">   
+          <label for="email">  </label>  
+          <input formControlName="email" class="form-control" type="text" placeholder="email">   
       </div>  
     </div>  
     
     <div class="row">  
       <div class=" col-md-offset-1 col-md-4">  
-          <label for="password"> Password </label>  
-          <input formControlName="password" class="form-control" type="password">   
+          <label for="password"> </label>  
+          <input formControlName="password" class="form-control" type="password" placeholder="password">   
       </div>  
     </div>  
     
     <div class="row" style="margin-top: 40px;">  
       <div class="col-md-offset-1 col-md-4">  
-          <button class="btn btn-md btn-primary btn-style"  >Login</button>  
+          <button class="btn btn-md btn-outline-primary btn-style" style="width: 100%;" >Zaloguj się</button>  
       </div>  
     </div>  
-    
+    <div class="row" style="margin-top: 20px;">  
+      <div class="col-md-offset-1 col-md-4">  
+          <button class="btn btn-md btn-outline-success btn-style" style="width: 100%;" routerLink="/register" routerLinkActive="active" >Utwórz nowe konto</button>  
+      </div>  
+    </div>  
   </form>  
+</div>
