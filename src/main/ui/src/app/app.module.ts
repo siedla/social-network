@@ -18,6 +18,7 @@ import { BasicAuthHtppInterceptorService } from './services/basic-auth-htpp-inte
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DisplayFriendsComponent } from './display-friends/display-friends.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     UserViewComponent,
     NavBarComponent,
     DisplayFriendsComponent,
-    SidebarComponent
+    SidebarComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

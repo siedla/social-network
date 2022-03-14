@@ -13,4 +13,5 @@ public interface UserService {
     List<User> findUserByFirstAndLastName(String firstName, String lastName);
     User addNewUser(User user);
     Boolean login(String email, String password);
+    User findUserById(Long id);
 }

@@ -22,7 +22,7 @@ public class Post implements Serializable {
     @Lob
     private String description;
     private LocalDateTime postDate;
-    private Long likes=0L;
+    private Long likes;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -87,7 +87,6 @@ public class Post implements Serializable {
         this.likes = likes;
     }
 
-    //@JsonManagedReference
     public User getUser() {
         return user;
     }

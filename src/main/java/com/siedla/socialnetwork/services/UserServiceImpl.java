@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService{
         }
         return user.getPassword().equals(password);
     }
+
+    @Override
+    public User findUserById(Long id) {
+        return userRepository.findById(id).get();
+    }
 }

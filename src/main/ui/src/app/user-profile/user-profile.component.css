@@ -1,0 +1,46 @@
+#user-container{
+    flex-flow: wrap;
+    justify-content: center;
+    padding-left: 25%;
+    padding-top: 30px;
+    margin-bottom: 20px;
+    background-color:#242526;
+    padding-bottom: 40px;
+}
+
+img {
+    width: 180px;
+    height: 180px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+#user{
+    display: flex;
+    flex-direction: row;
+}
+#details{
+    padding-top: 30px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    color: azure;
+    font-size: 35px;
+}
+#friends{
+    font-size: 20px;
+    color: #b0b3b8;
+}
+
+#posts {
+    width: 100%;
+}
+app-display-posts{
+    color: azure;
+    display: flex;
+    justify-self: center;
+    margin-left: 25%;
+    width: 50%;
+
+    flex-direction: column;
+    align-items: center;
+}

@@ -5,10 +5,7 @@ import com.siedla.socialnetwork.model.User;
 import com.siedla.socialnetwork.repositories.PostRepository;
 import com.siedla.socialnetwork.repositories.UserRepository;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,6 +25,7 @@ public class PostService {
     public List<Post> getPosts(){
         List<Post> postList = new LinkedList<>();
         postRepository.findAll().iterator().forEachRemaining(postList::add);
+        postList.sort(Comparator.comparing(Post::getId).reversed());
         return postList;
     }
 

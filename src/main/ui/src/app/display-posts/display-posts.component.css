@@ -2,11 +2,11 @@
     flex-flow: wrap;
     justify-content: center;
     
-    width: 80%;
+    width: 100%;
     height: auto;
     padding: 10px;
-    margin-left: 10px;
-    margin-right: 50px;
+    /* margin-left: 10px;
+    margin-right: 50px; */
     border-radius: 10px;
     background-color: #3a3b3c;
     margin-bottom: 20px;

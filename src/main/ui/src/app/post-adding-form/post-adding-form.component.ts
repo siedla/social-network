@@ -26,6 +26,7 @@ export class PostAddingFormComponent implements OnInit {
     this.userService.getCurrentUser().subscribe(data=> {
       this.user = data;
       this.newPost.user = this.user;
+      this.newPost.likes=0;
       this.postService.addPost(this.newPost, this.user.id).subscribe(res => this.dataService.notifyAboutChange());
       
       this.newPost.description="";});

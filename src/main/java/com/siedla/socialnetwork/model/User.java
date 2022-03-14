@@ -40,16 +40,9 @@ public class User implements Serializable {
     @Column
     private String photoUrl;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
-    @JsonIgnoreProperties("user")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnoreProperties({"user", "likedBy", "likes"})
     private List<Post> posts = new LinkedList<>();
-
-    /*@ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
-    private User user;
-
-    @OneToMany(mappedBy = "user")
-    private List<User> friends = new LinkedList<>();*/
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name="friends",

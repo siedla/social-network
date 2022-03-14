@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post } from '../model/post';
-import { BehaviorSubject, map, Subject } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,19 @@ export class UserService {
   private usersUrl = 'http://localhost:8081/users';
 
   constructor(private http: HttpClient) {
-  
+
   }
 
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl);
   }
 
-  //dokonczyc
-  public findPostsByUserId(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.usersUrl+"/1/posts");
-  }
-
   public getUserByEmail(email: String): Observable<User> {
     return this.http.get<User>(this.usersUrl+"/email/"+email);
+  }
+
+  public getUserById(id: Number): Observable<User> {
+    return this.http.get<User>(this.usersUrl+"/"+id);
   }
 
   public findUserByName(firstName: string, lastName: string): Observable<User[]> {
@@ -38,6 +37,10 @@ export class UserService {
     return this.http.post<User>('http://localhost:8081/signUp', user);
   }
 
+  public addFriend(user: User, friendId: Number) {
+    return this.http.put<User>(this.usersUrl+"/"+user.id+"/"+friendId, user);
+  }
+
 
   public authenticate(email: string, password: string) {
     return this.http
@@ -46,7 +49,7 @@ export class UserService {
         map(userData => {
           sessionStorage.setItem("email", email);
           sessionStorage.setItem("user", JSON.stringify(userData.user));
-  
+
           let tokenStr = "Bearer " + userData.token;
           sessionStorage.setItem("token", tokenStr);
           return userData;
@@ -65,8 +68,10 @@ export class UserService {
   }
 
   public getCurrentUser(){
-    let currentUser:User = JSON.parse(sessionStorage.getItem("user")!) as User;
-    return currentUser;
-    
+    //let currentUser:User = JSON.parse(sessionStorage.getItem("user")!) as User;
+    //return currentUser;
+
+    return this.getUserByEmail(sessionStorage.getItem("email") as string);
+
   }
 }

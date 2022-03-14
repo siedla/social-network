@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../model/post';
 import { User } from '../model/user';
 import { DataService } from '../services/data.service';
 import { PostsService } from '../services/posts.service';
@@ -14,12 +13,14 @@ export class DisplayFriendsComponent implements OnInit {
 
   user: User = {} as User;
 
-  constructor(private postService: PostsService, private userService: UserService, private dataService: DataService) { }
+  constructor(private postService: PostsService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.user = this.userService.getCurrentUser();
-    
+    this.loadFriends();
+
   }
 
-
+  loadFriends() {
+    this.userService.getCurrentUser().subscribe(data => {this.user = data; console.log(data)});
+  }
 }

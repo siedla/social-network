@@ -19,6 +19,11 @@ export class PostsService {
     return this.http.get<Post[]>(this.url+"/"+from+"/"+to);
   }
 
+  public getAllPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.url);
+  }
+
+
   public addPost(newPost: Post, userId: Number) {
     console.log(userId);
     return this.http.post<Post>(this.url+"/"+userId, newPost);
@@ -29,4 +34,8 @@ export class PostsService {
     return this.http.put<Post>(this.url+"/"+postId, post);
   }
 
+
+  public findPostsByUserId(userId: Number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.url+"/user/"+userId);
+  }
 }

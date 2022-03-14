@@ -30,7 +30,7 @@ public class PostController {
         return postService.getPostsBetweenId(from, to);
     }
 
-    @GetMapping(path = "/users/{id}/posts")
+    @GetMapping(path = "/posts/user/{id}")
     public List<Post> getUsersPosts(@PathVariable Long id) {
         return postService.getPostsByUserId(id);
     }

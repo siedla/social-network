@@ -31,10 +31,15 @@ public class UserController {
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
+    @GetMapping(path = "/users/{id}")
+    public User getUserById(@PathVariable Long id) {
+        return userService.findUserById(id);
+    }
 
-    @PostMapping("/users/{userId}/{friendId}")
+    @PutMapping("/users/{userId}/{friendId}")
     public User addFriend(@PathVariable Long userId, @PathVariable Long friendId, @RequestBody User user) {
         return userService.addFriend(user, userId, friendId);
+
     }
 
     @GetMapping("/users/{firstName}/{lastName}")

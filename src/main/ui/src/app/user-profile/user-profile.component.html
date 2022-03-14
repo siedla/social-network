@@ -1,0 +1,22 @@
+
+<div id="user-container">
+    <div id="user">
+        <span>
+            <img [src]="user.photoUrl">
+        </span>
+        <span id="details">
+            <span>
+                {{user.firstName}} {{user.lastName}}
+            </span>
+            
+            <span id="friends">
+                Friends: {{friendsCunter}}
+            </span>
+        </span>
+        
+    </div>
+</div>
+  
+<div id="posts">
+    <app-display-posts [posts]="posts"></app-display-posts>
+</div>

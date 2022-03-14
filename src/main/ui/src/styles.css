@@ -50,3 +50,6 @@ button:hover {
 .container button {
     margin: 10px;
 }
+html, body{
+    background-color: #18191a;
+}
