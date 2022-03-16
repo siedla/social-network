@@ -7,16 +7,32 @@ img{
 #author{
 margin-left: 1px;
 margin-bottom: 10px;
+padding: 10px;
 font-style: var(font-family);
 font-weight: bold;
 
 }
 #box {
     margin-top: 70px;
-    padding-left: 1%;
-    
+    padding-left: 5%;
+   
+    padding-top: 5%;
+    width: 100%;
 }
 .logout{
     margin-top: 100%;
     align-self: flex-end;
+    position: fixed;
+    bottom: 20px;
+    font-size: 20px;
+}
+.logout:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+#author:hover{
+    background-color: #b0b3b8;
+    cursor: pointer;
+    border-radius: 20px;
+ 
 }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light" style=" background-color:#242526;position: fixed;width: 100%; ">
   <div class="container-fluid" >
-    <a (click)="logoClick()" class="navbar-brand" style="color: azure;">SIEDLA SOCIAL NETWORK</a>
+    <a (click)="logoClick()" class="navbar-brand logo" style="color: azure; text-decoration: none; font-size: 20px;">SIEDLA SOCIAL NETWORK</a>
     <form class="d-flex pos " *ngIf="userService.isUserLoggedIn()">
       <input name="search" [(ngModel)]="name" class="form-control me-2 center-block" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit" (click)="search()" hidden>Search</button>

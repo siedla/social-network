@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(private userService: UserService, private route: Router) { }
 
-  user!: User;
+  user: User = {} as User;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => this.user=data);
@@ -21,5 +21,9 @@ export class SidebarComponent implements OnInit {
   logOutClick() {
     this.userService.logOut();
     this.route.navigate(['login']);
+  }
+
+  showProfileClick() {
+    this.route.navigate(['profile', this.user.id]);
   }
 }

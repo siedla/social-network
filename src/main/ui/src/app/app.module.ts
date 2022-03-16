@@ -19,7 +19,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DisplayFriendsComponent } from './display-friends/display-friends.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
- 
+import { NbThemeModule, NbChatModule } from '@nebular/theme';
+import { NbSidebarModule} from '@nebular/theme';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {  NbLayoutModule } from '@nebular/theme';
+import { ChatComponent } from './user-view/chat/chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NavBarComponent,
     DisplayFriendsComponent,
     SidebarComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,11 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NbThemeModule.forRoot(),
+    NbChatModule,
+    NbSidebarModule.forRoot(),
+    NbLayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true }],
   bootstrap: [AppComponent]

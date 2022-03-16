@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'register', component: SignUpComponent},
   {path: 'login', component: SignInComponent},
   {path: '', component: UserViewComponent, canActivate: [AuthGuard]},
-  {path: 'foundUsers', component: DisplayFoundUsersComponent, canActivate: [AuthGuard]},
+  {path: 'foundUsers/:firstName/:lastName', component: DisplayFoundUsersComponent, canActivate: [AuthGuard]},
   {path: 'display', component: DisplayUsersComponent},
   {path: 'profile/:userId', component: UserProfileComponent}
 ];

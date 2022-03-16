@@ -4,3 +4,7 @@
     align-items: center;
     
 }
+.logo:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}

@@ -4,7 +4,6 @@
 }
 label{
     display: inline-block;
-    background-color: indigo;
     color: white;
     padding: 0.5rem;
     font-family: sans-serif;
@@ -12,3 +11,4 @@ label{
     cursor: pointer;
     margin-top: 1rem;
   }
+  

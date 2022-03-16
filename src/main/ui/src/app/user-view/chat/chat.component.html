@@ -1,0 +1,23 @@
+<div style="position: fixed;" *ngIf="chatWithUserId >= 0">
+    <nb-layout  style="width: 200px; height: 400px; background-color: 	#242526;">
+
+        <nb-layout-column style=" width: 200px; height: 400px; padding: 0%; background-color: 	#242526;">
+            <nb-chat status="primary" title="{{user.firstName}} {{user.lastName}}" style="  margin: 0%; padding: 0px; background-color: 	#242526;">
+               
+                <nb-chat-message *ngFor="let msg of conversation.messages"
+                                [type]="type"
+                                [message]="msg.text"
+                                [reply]="msg.fromId==user.id"
+                                [sender]="getSender(msg.fromId)"
+                                [date]="msg.postDate"
+    
+                                [avatar]="getSenderPhoto(msg.fromId)" 
+                                style="background-color: 	#242526;">
+                </nb-chat-message>
+                <nb-chat-form  (send)="sendMessage($event)" [dropFiles]="true" style="border-top: none;"></nb-chat-form>
+            </nb-chat>
+        </nb-layout-column>
+    </nb-layout>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeChat()" style="position: absolute; top: 10px;height: 30px;width: 30px; left:85%; box-shadow: none;"></button>
+
+</div>

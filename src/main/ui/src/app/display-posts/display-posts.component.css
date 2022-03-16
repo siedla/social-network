@@ -39,3 +39,8 @@ img {
     font-size: 12px;
     color: #b0b3b8;
 }
+
+#name:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}

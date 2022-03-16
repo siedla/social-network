@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { DataService } from 'src/app/services/data.service';
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DisplayFoundUsersComponent implements OnInit {
 
-  constructor(private userService: UserService, private dataService: DataService) {
+  constructor(private userService: UserService, private dataService: DataService, private route: ActivatedRoute) {
   }
 
   notifierSubscription: Subscription = this.dataService.foundUsersNotifier.subscribe(data => {
@@ -20,13 +21,23 @@ export class DisplayFoundUsersComponent implements OnInit {
 });
 
   foundUsers: User[] = [];
+  searchedFirstName: string = {} as string;
+  searchedLastName: string = {} as string;
 
   ngOnInit() {
-
+    this.route.params.subscribe((params: Params) => {this.searchedFirstName = params['firstName'];this.searchedLastName = params['lastName']; this.loadUsers()});
   }
 
   addFriendClick(user: User) {
     this.userService.getCurrentUser().subscribe(currnetUser => this.userService.addFriend(currnetUser, user.id).subscribe(data => console.log(data)));
     //this.userService.addFriend(this.userService.getCurrentUser(), user.id).subscribe(data => console.log(data));
+  }
+
+  showProfileClick(id: Number){
+
+  }
+
+  loadUsers() {
+    this.userService.findUserByName(this.searchedFirstName, this.searchedLastName).subscribe(data => this.foundUsers = data);
   }
 }

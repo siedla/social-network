@@ -9,7 +9,15 @@ button{
 }
 #user-box {
     margin-bottom: 10px;
+    padding: 10px;
 }
 #container {
-    margin-top: 15px;
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: azure;
+}
+#user-box:hover{
+    background-color:#b0b3b8;
 }

@@ -1,17 +1,19 @@
 package com.siedla.socialnetwork.bootstrap;
 
 
+import com.siedla.socialnetwork.model.Conversation;
+import com.siedla.socialnetwork.model.Message;
 import com.siedla.socialnetwork.model.Post;
 import com.siedla.socialnetwork.model.User;
+import com.siedla.socialnetwork.repositories.ConversationRepository;
+import com.siedla.socialnetwork.repositories.MessageRepository;
 import com.siedla.socialnetwork.repositories.PostRepository;
 import com.siedla.socialnetwork.repositories.UserRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,15 +24,20 @@ public class PostBootstrap implements ApplicationListener<ContextRefreshedEvent>
 
     private final UserRepository userRepository;
     private final PostRepository postRepository;
+    private final MessageRepository messageRepository;
+    private final ConversationRepository conversationRepository;
 
-    public PostBootstrap(UserRepository userRepository, PostRepository postRepository) {
+    public PostBootstrap(UserRepository userRepository, PostRepository postRepository, MessageRepository messageRepository, ConversationRepository conversationRepository) {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
+        this.messageRepository = messageRepository;
+        this.conversationRepository = conversationRepository;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         postRepository.saveAll(getPosts());
+        addMessages();
         userRepository.save(new User("Jan", "Nowak", "email@email.com", "$2a$10$ixlPY3AAd4ty1l6E2IsQ9OFZi2ba9ZQE0bP7RFcGIWNhyFrrT3YUi"));
     }
 
@@ -63,9 +70,34 @@ public class PostBootstrap implements ApplicationListener<ContextRefreshedEvent>
 
         posts.add(user2Post);
 
-
-
         return posts;
+    }
+
+    private void addMessages(){
+        Optional<User> userOptional = userRepository.findById(1L);
+        Optional<User> user2Optional = userRepository.findById(2L);
+        if(userOptional.isEmpty() || user2Optional.isEmpty()){
+            throw new RuntimeException("Expected User Not Found");
+        }
+
+        User user1 = userOptional.get();
+        User user2 = user2Optional.get();
+        Conversation conversation = new Conversation();
+        conversation.getUsers().add(user1);
+        conversation.getUsers().add(user2);
+        user1.getConversations().add(conversation);
+        user2.getConversations().add(conversation);
+
+        Message message = new Message();
+        message.setFromId(user1.getId());
+        message.setText("Test czy dziala");
+        message.setPostDate(LocalDateTime.now());
+        message.setConversation(conversation);
+        conversation.getMessages().add(message);
+        conversationRepository.save(conversation);
+        userRepository.save(user1);
+        userRepository.save(user2);
+
 
     }
 }

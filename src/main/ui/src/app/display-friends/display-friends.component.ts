@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { DataService } from '../services/data.service';
-import { PostsService } from '../services/posts.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class DisplayFriendsComponent implements OnInit {
 
   user: User = {} as User;
 
-  constructor(private postService: PostsService, private userService: UserService, private router: Router) { }
+  constructor(private dataService: DataService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadFriends();
@@ -22,10 +21,13 @@ export class DisplayFriendsComponent implements OnInit {
   }
 
   loadFriends() {
-    this.userService.getCurrentUser().subscribe(data => {this.user = data; console.log(data)});
+    this.userService.getCurrentUser().subscribe(data => {this.user = data});
   }
 
   showProfileClick(userId: Number) {
     this.router.navigate(['profile', userId]);
+  }
+  showChat(userId: Number) {
+    this.dataService.noifyAboutOpenedChat(userId);
   }
 }

@@ -2,6 +2,9 @@ package com.siedla.socialnetwork.model;
 
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -55,6 +58,12 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "post_id"))
     private List<Post> likedPosts = new LinkedList<>();
 
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(name = "User_Conversation", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "conversation_id"))
+    @JsonIgnore
+    private List<Conversation> conversations = new LinkedList<>();
 
     public User() {
         this.photoUrl = "https://i.ibb.co/cL2QC11/Screenshot-1.png";
@@ -154,4 +163,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public List<Conversation> getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(List<Conversation> conversations) {
+        this.conversations = conversations;
+    }
 }

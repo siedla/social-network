@@ -11,6 +11,8 @@ export class DataService {
   subjectNotifier: Subject<void> = new Subject<void>();
 
   foundUsersNotifier: Subject<any> = new Subject<any>();
+
+  chatWithUser: Subject<any> = new Subject<any>();
  
   constructor() { }
  
@@ -20,5 +22,9 @@ export class DataService {
 
   notifyAboutFoundUsers(foundUsers: User[]) {
     this.foundUsersNotifier.next(foundUsers);
+  }
+
+  noifyAboutOpenedChat(id: Number) {
+    this.chatWithUser.next(id);
   }
 }

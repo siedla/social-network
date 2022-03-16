@@ -9,5 +9,10 @@ margin-left: 1px;
 margin-bottom: 10px;
 font-style: var(font-family);
 font-weight: bold;
-
+padding: 10px;
+border-radius: 20px;
+}
+#author:hover{
+    background-color: #b0b3b8;
+    cursor: pointer;
 }

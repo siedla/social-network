@@ -27,7 +27,7 @@ export class NavBarComponent implements OnInit {
     this.userService.findUserByName(firstName, lastName).subscribe(data => {
       this.dataService.notifyAboutFoundUsers(data);
     });
-    this.router.navigate(["foundUsers"]);
+    this.router.navigate(["foundUsers", firstName, lastName]);
   }
 
   logoClick() {
