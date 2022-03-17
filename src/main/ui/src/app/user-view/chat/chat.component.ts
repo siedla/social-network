@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { DataService } from 'src/app/services/data.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -22,12 +23,19 @@ export class ChatComponent implements OnInit{
 
   type: string = "text";
   chatWithUserId: Number = -1;
+  chattingUser: User = {} as User;
+
+  notifierSubscription: Subscription = this.dataService.chatWithUser.subscribe(data => {
+    this.chatWithUserId = data;
+    this.userService.getUserById(data).subscribe( t=>this.chattingUser = t);
+    this.userService.getCurrentUser().subscribe(data => {this.user = data;
+      this.conversationService.getConversation(this.user.id, this.chatWithUserId).subscribe(data => {this.conversation = data});});
+});
 
   ngOnInit(): void {
-    this.dataService.chatWithUser.subscribe(data => this.chatWithUserId = data);
+  
     this.connect();
-    this.userService.getCurrentUser().subscribe(data => this.user = data);
-    this.conversationService.getConversation(1, 2).subscribe(data => {this.conversation = data});
+    
   }
 
   conversation: Conversation = {} as Conversation;
