@@ -9,10 +9,11 @@
 }
 
 img {
-    width: 180px;
-    height: 180px;
-    margin-right: 10px;
+
     border-radius: 50%;
+    width: 180px;
+    clip-path: circle();
+   margin-right: 8px;
 }
 #user{
     display: flex;

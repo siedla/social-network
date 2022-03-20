@@ -1,4 +1,10 @@
-<div id="box" style="position: relative;">
+
+<div id="box" style="position: fixed;">
+
   <div id="author" (click)="showProfileClick()"><img [src]="user.photoUrl">{{user.firstName}} {{user.lastName}}</div>
   <div class="bi bi-box-arrow-right logout" (click)="logOutClick()"> Logout</div>
+  
 </div>
+<nb-layout>
+  <nb-layout-column style="background-color: #18191a;"></nb-layout-column>
+</nb-layout>

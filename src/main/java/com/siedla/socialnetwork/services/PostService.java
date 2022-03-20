@@ -64,4 +64,23 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    public Post likePost(Post post, Long postId, Long userId){
+        Post updatePost = postRepository.findById(postId).get();
+        updatePost.setLikes(updatePost.getLikes()+1);
+        User user = userRepository.findById(userId).get();
+        post.getLikedBy().add(user);
+        user.getLikedPosts().add(updatePost);
+        userRepository.save(user);
+        return postRepository.save(updatePost);
+    }
+
+    public Post dislikePost(Post post, Long postId, Long userId){
+        Post updatePost = postRepository.findById(postId).get();
+        updatePost.setLikes(updatePost.getLikes()-1);
+        User user = userRepository.findById(userId).get();
+        post.getLikedBy().remove(user);
+        user.getLikedPosts().remove(updatePost);
+        userRepository.save(user);
+        return postRepository.save(updatePost);
+    }
 }

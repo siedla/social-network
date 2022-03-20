@@ -38,4 +38,12 @@ export class PostsService {
   public findPostsByUserId(userId: Number): Observable<Post[]> {
     return this.http.get<Post[]>(this.url+"/user/"+userId);
   }
+
+  public likePost(post: Post, postId: Number, userId: Number) {
+    return this.http.put<Post>(this.url+"/"+postId+"/"+userId, post);
+  }
+
+  public dislikePost(post: Post, postId: Number, userId: Number) {
+    return this.http.put<Post>(this.url+"/dislike/"+postId+"/"+userId, post);
+  }
 }

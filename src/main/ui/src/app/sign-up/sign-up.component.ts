@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'; 
+import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { UserService } from '../services/user.service';
 
@@ -10,7 +11,11 @@ import { UserService } from '../services/user.service';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) {
+    if(this.userService.isUserLoggedIn()){
+      this.router.navigate(['']);
+    }
+   }
 
   ngOnInit(): void {
   }
@@ -30,7 +35,7 @@ export class SignUpComponent implements OnInit {
     newUser.lastName=this.LastName;
     newUser.email=this.Email;
     newUser.password=this.Password;
-    this.userService.addNewUser(newUser).subscribe();
+    this.userService.addNewUser(newUser).subscribe(t => this.router.navigate(['']));
   }
 
   get FirstName(){  

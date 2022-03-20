@@ -1,6 +1,7 @@
 package com.siedla.socialnetwork.model;
 
 import com.fasterxml.jackson.annotation.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,8 +16,7 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Lob
+    
     private String description;
     private LocalDateTime postDate;
     private Long likes;

@@ -21,11 +21,10 @@ button{
 }
 
 img {
+
     width: 40px;
-    height: 40px;
-    margin-right: 10px;
-  
-    border-radius: 50%;
+    clip-path: circle();
+   margin-right: 8px;
 }
 #author{
     display: flex;
@@ -43,4 +42,8 @@ img {
 #name:hover{
     opacity: 0.7;
     cursor: pointer;
+}
+i{
+    width:fit-content;
+    margin-right: 30px;
 }

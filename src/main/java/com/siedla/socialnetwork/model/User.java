@@ -56,6 +56,7 @@ public class User implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "liked_posts", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "post_id"))
+    @JsonIgnore
     private List<Post> likedPosts = new LinkedList<>();
 
     @ManyToMany

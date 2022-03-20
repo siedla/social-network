@@ -1,5 +1,7 @@
 package com.siedla.socialnetwork.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -18,7 +20,6 @@ public class Message implements Serializable {
 
     private Long fromId;
 
-    @Lob
     private String text;
 
     private LocalDateTime postDate;

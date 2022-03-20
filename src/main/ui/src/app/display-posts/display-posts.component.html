@@ -21,7 +21,7 @@
     <div id="description">{{post.description}}</div>
     <div class="row">
         <p class="col" style="color: azure;">Likes: {{post.likes}}</p>
-        <button type="button" class="btn btn-success" (click)="likeButtonClick(post)">Like</button>
+        <i (click)="likeButtonClick(post)" [ngClass]="checkIfAlreadyLike(post)? 'bi bi-heart-fil' : 'bi bi-heart' "  class="bi bi-heart-fill" [ngStyle]="{'color': checkIfAlreadyLike(post)? '#fb3958' : ''}" style="font-size: 25px;"></i>
     </div>
 </div>
 

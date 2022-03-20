@@ -7,4 +7,5 @@ export interface Post {
     likes: number;
     user: User;
     photoUrl: string;
+    likedBy: User[];
 }

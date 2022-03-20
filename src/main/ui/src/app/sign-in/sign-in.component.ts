@@ -12,7 +12,12 @@ import { UserService } from '../services/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) {
+    if(this.userService.isUserLoggedIn()){
+      this.router.navigate(['']);
+    }
+   
+   }
 
   ngOnInit(): void {
   }

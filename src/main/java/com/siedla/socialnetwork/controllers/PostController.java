@@ -45,4 +45,14 @@ public class PostController {
     public Post updatePost(@RequestBody Post post, @PathVariable Long postId){
         return postService.updatePost(post, postId);
     }
+
+    @PutMapping(path = "/posts/{postId}/{userId}")
+    public Post likePost(@RequestBody Post post, @PathVariable Long postId, @PathVariable Long userId){
+        return postService.likePost(post, postId, userId);
+    }
+
+    @PutMapping(path = "/posts/dislike/{postId}/{userId}")
+    public Post dislikePost(@RequestBody Post post, @PathVariable Long postId, @PathVariable Long userId){
+        return postService.dislikePost(post, postId, userId);
+    }
 }
