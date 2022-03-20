@@ -2,6 +2,6 @@
 <div id="container">
     <div id="user-box" *ngFor="let user of foundUsers" (click)="showProfileClick(user.id)">
         <img [src]="user.photoUrl">{{user.firstName}} {{user.lastName}}
-        <button (click)="addFriendClick(user)" type="button" class="btn btn-success" >Dodaj Znajomego</button>
+        <button *ngIf="user.id != loggedUser.id" (click)="addFriendClick(user)" type="button" class="btn btn-success" >Dodaj Znajomego</button>
     </div>
 </div>

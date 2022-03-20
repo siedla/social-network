@@ -2,7 +2,7 @@
 <div id="post-container" *ngFor="let post of posts">
     <div id="author">
         <span>
-            <img [src]="post.user.photoUrl">
+            <img style="position: relative;z-index: 0;" [src]="post.user.photoUrl">
         </span>
        <span id="details">
             <span (click)="showProfileClick(post.user.id)" id="name">

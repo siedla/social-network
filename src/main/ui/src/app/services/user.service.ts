@@ -41,6 +41,16 @@ export class UserService {
     return this.http.put<User>(this.usersUrl+"/"+user.id+"/"+friendId, user);
   }
 
+  public getFriends(userId: Number) {
+    return this.http.get<User[]>(this.usersUrl+"/friends/"+userId);
+  }
+
+  public addProfileImage(image: File, userId: Number){
+    const formData = new FormData(); 
+        
+    formData.append("file", image, image.name);
+    return this.http.post<User>(this.usersUrl+"/image/"+userId, formData);
+  }
 
   public authenticate(email: string, password: string) {
     return this.http
@@ -74,4 +84,6 @@ export class UserService {
     return this.getUserByEmail(sessionStorage.getItem("email") as string);
 
   }
+
+  
 }

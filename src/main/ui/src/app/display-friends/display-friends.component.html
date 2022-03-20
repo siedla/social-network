@@ -1,11 +1,13 @@
-<div style="position: fixed; margin-top: 50px; width: 100%;overflow-y:scroll">
+<div style="position: fixed; margin-top: 50px; width: 100%; height: 100%;">
     <div class="BOelement">
         <h3 style="color: azure;">Kontakty</h3>
     </div>
-    
-    <div *ngFor="let friend of user.friends">
-        <div id="author" (click)="showChat(friend.id)"><img [src]="friend.photoUrl">{{friend.firstName}} {{friend.lastName}}</div>
+    <div style="overflow-y: scroll; height: 100%;">
+        <div *ngFor="let friend of friends">
+            <div id="author" (click)="showChat(friend.id)"><img [src]="friend.photoUrl">{{friend.firstName}} {{friend.lastName}}</div>
+        </div>
     </div>
+   
     <app-chat style="position:fixed; bottom: 400px; left: 70%;"></app-chat>
 </div>
 

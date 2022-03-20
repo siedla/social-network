@@ -14,4 +14,6 @@ public interface UserService {
     User addNewUser(User user);
     Boolean login(String email, String password);
     User findUserById(Long id);
+    User addImage(User user, String img);
+    List<User> getUserFriends(Long id);
 }

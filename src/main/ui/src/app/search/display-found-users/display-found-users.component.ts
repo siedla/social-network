@@ -21,10 +21,12 @@ export class DisplayFoundUsersComponent implements OnInit {
 });
 
   foundUsers: User[] = [];
+  loggedUser: User = {} as User;
   searchedFirstName: string = {} as string;
   searchedLastName: string = {} as string;
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe(user => this.loggedUser = user)
     this.route.params.subscribe((params: Params) => {this.searchedFirstName = params['firstName'];this.searchedLastName = params['lastName']; this.loadUsers()});
   }
 

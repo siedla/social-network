@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService{
             user = optionalUser.get();
             user.getFriends().add(friend);
             friend.getFriends().add(user);
+            userRepository.save(friend);
             userRepository.save(user);
         }
         return user;
@@ -66,5 +67,17 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findUserById(Long id) {
         return userRepository.findById(id).get();
+    }
+
+    @Override
+    public User addImage(User user,String img) {
+        user.setPhotoUrl(img);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getUserFriends(Long id) {
+        User user = userRepository.findUserById(id);
+        return user.getFriends();
     }
 }

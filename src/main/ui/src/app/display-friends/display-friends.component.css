@@ -12,6 +12,7 @@ margin-left: 1px;
 font-style: var(font-family);
 font-weight: bold;
 padding-bottom: 5px;
+padding-top: 5px;
 border-radius: 20px;
 }
 #author:hover{

@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
 export class DisplayFriendsComponent implements OnInit {
 
   user: User = {} as User;
+  friends: User[] = {} as User[];
 
   constructor(private dataService: DataService, private userService: UserService, private router: Router) { }
 
@@ -21,7 +22,9 @@ export class DisplayFriendsComponent implements OnInit {
   }
 
   loadFriends() {
-    this.userService.getCurrentUser().subscribe(data => {this.user = data});
+    this.userService.getCurrentUser().subscribe(data => {this.user = data;
+      this.userService.getFriends(this.user.id).subscribe(data => {this.friends = data; console.log(this.friends)});
+    });
   }
 
   showProfileClick(userId: Number) {

@@ -46,7 +46,8 @@ public class User implements Serializable {
             joinColumns=@JoinColumn(name="personId"),
             inverseJoinColumns=@JoinColumn(name="friendId")
     )
-    @JsonIgnoreProperties({"friends","likedPosts"})
+    //@JsonIgnoreProperties({"friends","likedPosts"})
+    @JsonIgnore
     private List<User> friends = new LinkedList<>();
 
     @ManyToMany(mappedBy = "friends")
