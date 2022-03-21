@@ -30,15 +30,10 @@ export class UserViewComponent implements OnInit {
 
   
   loadPosts() {
-    // this.postService.getPostsBetweenId(this.loaded+1, this.loaded+10).subscribe(data => {
-    //   this.posts = data.concat(this.posts);
-    //   this.loaded += data.length;
-    //   console.log(this.posts);
-    // });
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
       this.loaded += data.length;
-      console.log(this.posts);
+    
     });
   }
 

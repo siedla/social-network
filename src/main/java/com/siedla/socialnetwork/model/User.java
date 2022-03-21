@@ -38,7 +38,8 @@ public class User implements Serializable {
     private String photoUrl;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonIgnoreProperties({"user", "likedBy", "likes"})
+    //@JsonIgnoreProperties({"user", "likedBy", "likes"})
+    @JsonIgnore
     private List<Post> posts = new LinkedList<>();
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
