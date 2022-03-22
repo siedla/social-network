@@ -46,14 +46,13 @@ export class DisplayPostsComponent implements OnInit {
   }
 
   checkIfAlreadyLike(post: Post) {
-    var alreadyLike = false;
+    
     for(var i=0; i<post.likedBy.length; i++){
       if(post.likedBy[i].id == this.user.id){
-          alreadyLike = true;
-          break;
+        return true;
       }
     }
-    if(alreadyLike) return true;
+  
     return false;
   }
 }

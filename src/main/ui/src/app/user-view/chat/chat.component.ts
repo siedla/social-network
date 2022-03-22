@@ -8,6 +8,7 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -62,7 +63,7 @@ export class ChatComponent implements OnInit{
   newmessage: Message = {} as Message;
   private stompClient: any;
   connect() {
-    const socket = new SockJS('http://localhost:8081/conversation');
+    const socket = new SockJS(environment.baseUrl+'conversation');
     this.stompClient = Stomp.over(socket);
     this.stompClient.debug = null
     const _this = this;

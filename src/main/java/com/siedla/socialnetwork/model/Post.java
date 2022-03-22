@@ -1,7 +1,6 @@
 package com.siedla.socialnetwork.model;
 
 import com.fasterxml.jackson.annotation.*;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;

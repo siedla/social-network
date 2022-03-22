@@ -38,7 +38,6 @@ public class User implements Serializable {
     private String photoUrl;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    //@JsonIgnoreProperties({"user", "likedBy", "likes"})
     @JsonIgnore
     private List<Post> posts = new LinkedList<>();
 
@@ -47,7 +46,7 @@ public class User implements Serializable {
             joinColumns=@JoinColumn(name="personId"),
             inverseJoinColumns=@JoinColumn(name="friendId")
     )
-    //@JsonIgnoreProperties({"friends","likedPosts"})
+
     @JsonIgnore
     private List<User> friends = new LinkedList<>();
 

@@ -5,13 +5,14 @@ import { User } from '../model/user';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post } from '../model/post';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private usersUrl = 'http://localhost:8081/users';
+  private usersUrl = environment.baseUrl+'users';
 
   constructor(private http: HttpClient) {
 
@@ -34,7 +35,7 @@ export class UserService {
   }
 
   public addNewUser(user: User) {
-    return this.http.post<User>('http://localhost:8081/signUp', user);
+    return this.http.post<User>(environment.baseUrl+'signUp', user);
   }
 
   public addFriend(user: User, friendId: Number) {
@@ -54,7 +55,7 @@ export class UserService {
 
   public authenticate(email: string, password: string) {
     return this.http
-      .post<any>("http://localhost:8081/authenticate", { email, password })
+      .post<any>(environment.baseUrl+"authenticate", { email, password })
       .pipe(
         map(userData => {
           sessionStorage.setItem("email", email);

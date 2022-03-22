@@ -41,6 +41,7 @@ public class PostService {
         List<Post> postList = new LinkedList<>();
         Optional<List<Post>> listOptional = postRepository.findByUserId(id);
         listOptional.ifPresent(postList::addAll);
+        postList.sort(Comparator.comparing(Post::getPostDate).reversed());
         return postList;
     }
 

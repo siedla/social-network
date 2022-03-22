@@ -1,19 +1,19 @@
 <div id="box">
   <form [formGroup]="form" #AdminInformation (ngSubmit)="submit()">  
     <div class="row">
-      <h2 style="color: azure;">Rejestracja</h2>
+      <h2 style="color: azure;">Sign Up</h2>
     </div>
     <div class="row">  
       <div class=" col-md-offset-1 col-md-4">  
           <label for="firstName">  </label>  
-          <input formControlName="firstName" class="form-control" type="text" placeholder="Imię">   
+          <input formControlName="firstName" class="form-control" type="text" placeholder="First name">   
       </div>  
     </div> 
     
     <div class="row">  
         <div class=" col-md-offset-1 col-md-4">  
             <label for="lastName">  </label>  
-            <input formControlName="lastName" class="form-control" type="text" placeholder="Nazwisko">   
+            <input formControlName="lastName" class="form-control" type="text" placeholder="Last name">   
         </div>  
       </div> 
     
@@ -27,26 +27,26 @@
     <div class="row">  
       <div class=" col-md-offset-1 col-md-4">  
           <label for="password">  </label>  
-          <input formControlName="password" class="form-control" type="password" placeholder="Hasło">   
+          <input formControlName="password" class="form-control" type="password" placeholder="Password">   
       </div>  
     </div>  
     
     <div class="row">  
       <div class=" col-md-offset-1 col-md-4">  
           <label for="confirmPassword"> Confirm  </label>  
-          <input formControlName="confirmPassword" class="form-control" type="password" placeholder="Powtórz hasło">   
+          <input formControlName="confirmPassword" class="form-control" type="password" placeholder="Repeat password">   
       </div>  
     </div>  
     
     <div class="row" style="margin-top: 20px;">  
       <div class="col-md-offset-1 col-md-4">  
-          <button class="btn btn-md btn-outline-primary btn-style"  >Zarejestruj się </button>  
+          <button class="btn btn-md btn-outline-primary btn-style"  >Sign Up </button>  
       </div>  
     </div>  
     
     <div class="row" style="margin-top: 20px;">  
       <div class="col-md-offset-1 col-md-4">  
-          <button class="btn btn-md btn-outline-success btn-style"  routerLink="/login" routerLinkActive="active">Logowanie</button>  
+          <button class="btn btn-md btn-outline-success btn-style"  routerLink="/login" routerLinkActive="active">Sign In</button>  
       </div>  
     </div>  
 
