@@ -2,7 +2,9 @@ package com.siedla.socialnetwork.controllers;
 
 import com.siedla.socialnetwork.model.Post;
 import com.siedla.socialnetwork.services.PostService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.List;
 
@@ -16,43 +18,43 @@ public class PostController {
     }
 
     @GetMapping(path = "/posts")
-    public List<Post> getPosts() {
-        return postService.getPosts();
+    public ResponseEntity<List<Post>> getPosts() {
+        return ResponseEntity.ok(postService.getPosts());
     }
 
     @GetMapping(path = "/posts/{id}")
-    public Post getPostById(@PathVariable Long id){
-        return postService.getPostById(id);
+    public ResponseEntity<Post> getPostById(@PathVariable Long id){
+        return ResponseEntity.ok(postService.getPostById(id));
     }
 
     @GetMapping(path = "/posts/{from}/{to}")
-    public List<Post> getPostsBetweenId(@PathVariable Long from, @PathVariable Long to) {
-        return postService.getPostsBetweenId(from, to);
+    public ResponseEntity<List<Post>> getPostsBetweenId(@PathVariable Long from, @PathVariable Long to) {
+        return ResponseEntity.ok(postService.getPostsBetweenId(from, to));
     }
 
     @GetMapping(path = "/posts/user/{id}")
-    public List<Post> getUsersPosts(@PathVariable Long id) {
-        return postService.getPostsByUserId(id);
+    public ResponseEntity<List<Post>> getUsersPosts(@PathVariable Long id) {
+        return ResponseEntity.ok(postService.getPostsByUserId(id));
     }
 
     @PostMapping(path = "/posts/{userId}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Post addPost(@RequestBody Post post, @PathVariable Long userId) {
-        return postService.addPost(post, userId);
+    public ResponseEntity<Post> addPost(@RequestBody Post post, @PathVariable Long userId) {
+        return ResponseEntity.ok(postService.addPost(post, userId));
     }
 
     @PutMapping(path = "/posts/{postId}")
-    public Post updatePost(@RequestBody Post post, @PathVariable Long postId){
-        return postService.updatePost(post, postId);
+    public ResponseEntity<Post> updatePost(@RequestBody Post post, @PathVariable Long postId){
+        return ResponseEntity.ok(postService.updatePost(post, postId));
     }
 
     @PutMapping(path = "/posts/{postId}/{userId}")
-    public Post likePost(@RequestBody Post post, @PathVariable Long postId, @PathVariable Long userId){
-        return postService.likePost(post, postId, userId);
+    public ResponseEntity<Post> likePost(@RequestBody Post post, @PathVariable Long postId, @PathVariable Long userId){
+        return ResponseEntity.ok(postService.likePost(post, postId, userId));
     }
 
     @PutMapping(path = "/posts/dislike/{postId}/{userId}")
-    public Post dislikePost(@RequestBody Post post, @PathVariable Long postId, @PathVariable Long userId){
-        return postService.dislikePost(post, postId, userId);
+    public ResponseEntity<Post> dislikePost(@RequestBody Post post, @PathVariable Long postId, @PathVariable Long userId){
+        return ResponseEntity.ok(postService.dislikePost(post, postId, userId));
     }
 }

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { User } from '../model/user';
 import { Observable } from 'rxjs/internal/Observable';
-import { Post } from '../model/post';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -12,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  private usersUrl = environment.baseUrl+'users';
+  private usersUrl = environment.baseUrl+"users";
 
   constructor(private http: HttpClient) {
 

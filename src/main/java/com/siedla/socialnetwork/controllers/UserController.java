@@ -5,6 +5,7 @@ import com.siedla.socialnetwork.model.User;
 import com.siedla.socialnetwork.services.FileLocationService;
 import com.siedla.socialnetwork.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,49 +29,48 @@ public class UserController {
     }
 
     @GetMapping(path = "/users")
-    public List<User> getUsers() {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> getUsers() {
+        return ResponseEntity.ok(userService.getUsers());
     }
 
     @GetMapping(path = "/users/email/{email}")
-    public User getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email);
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(userService.getUserByEmail(email));
     }
     @GetMapping(path = "/users/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.findUserById(id);
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.findUserById(id));
     }
 
     @GetMapping(path = "/users/friends/{id}")
-    public List<User> getUserFriends(@PathVariable Long id) {
-        return userService.getUserFriends(id);
+    public ResponseEntity<List<User>> getUserFriends(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserFriends(id));
     }
 
     @PutMapping("/users/{userId}/{friendId}")
-    public User addFriend(@PathVariable Long userId, @PathVariable Long friendId, @RequestBody User user) {
-        System.out.println("Adding friend");
-        return userService.addFriend(user, userId, friendId);
+    public ResponseEntity<User> addFriend(@PathVariable Long userId, @PathVariable Long friendId, @RequestBody User user) {
+        return ResponseEntity.ok(userService.addFriend(user, userId, friendId));
 
     }
 
     @GetMapping("/users/{firstName}/{lastName}")
-    public List<User> findUserByFirstAndLastName(@PathVariable String firstName, @PathVariable String lastName) {
-        return userService.findUserByFirstAndLastName(firstName, lastName);
+    public ResponseEntity<List<User>> findUserByFirstAndLastName(@PathVariable String firstName, @PathVariable String lastName) {
+        return ResponseEntity.ok(userService.findUserByFirstAndLastName(firstName, lastName));
     }
 
     @PostMapping("/signUp")
-    public User signUp(@RequestBody SimpleUser simpleUser) {
+    public ResponseEntity<User> signUp(@RequestBody SimpleUser simpleUser) {
         User newUser = new User(simpleUser.getFirstName(), simpleUser.getLastName(),
                 simpleUser.getEmail(), passwordEncoder.encode(simpleUser.getPassword()));
 
-        return userService.addNewUser(newUser);
+        return ResponseEntity.ok(userService.addNewUser(newUser));
     }
 
     @PostMapping("/users/image/{userId}")
-    public User addImage(@RequestParam("file") MultipartFile image, @PathVariable Long userId) throws Exception {
+    public ResponseEntity<User> addImage(@RequestParam("file") MultipartFile image, @PathVariable Long userId) throws Exception {
         String imagePath = fileLocationService.save(image.getBytes(), image.getOriginalFilename());
         User user = userService.findUserById(userId);
-        return userService.addImage(user, imagePath);
+        return ResponseEntity.ok(userService.addImage(user, imagePath));
     }
 
 }
